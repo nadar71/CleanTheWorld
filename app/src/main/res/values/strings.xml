@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CleanTheWorld</string>
+    <string name="collectBtnLabel">Collect !!</string>
+    <string name="otherbtn">otherBtn</string>
+    <string name="plasticbtn">plasticBtn</string>
+    <string name="test_text">TEST TEXT</string>
+    <string name="infobtn">infoBtn</string>
+    <string name="collectbtn">collectBtn</string>
+</resources>
