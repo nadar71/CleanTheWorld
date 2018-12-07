@@ -1,5 +1,6 @@
 package eu.indiewalkabout.cleantheworld.data;
 
+<<<<<<< HEAD
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
@@ -33,4 +34,9 @@ public abstract class CleanWorldDb extends RoomDatabase {
 
     public abstract CleanDbDao cleanDbDao();
 
+=======
+import android.arch.persistence.room.RoomDatabase;
+
+public abstract class CleanWorldDb extends RoomDatabase {
+>>>>>>> bf9558a5a8336c716856ee8a13f20b70ccde2398
 }

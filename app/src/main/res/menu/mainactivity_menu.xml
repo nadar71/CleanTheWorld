@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,5 +13,8 @@
         app:showAsAction="ifRoom"
         />
 
+=======
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+>>>>>>> bf9558a5a8336c716856ee8a13f20b70ccde2398
 
 </menu>

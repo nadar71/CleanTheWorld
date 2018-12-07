@@ -1,5 +1,6 @@
 package eu.indiewalkabout.cleantheworld.data;
 
+<<<<<<< HEAD
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -25,4 +26,7 @@ public interface CleanDbDao {
     @Delete
     void deleteCollection(CollectionEntry collectionEntry);
 
+=======
+public interface CleanDbDao {
+>>>>>>> bf9558a5a8336c716856ee8a13f20b70ccde2398
 }

@@ -1,5 +1,6 @@
 package eu.indiewalkabout.cleantheworld.data;
 
+<<<<<<< HEAD
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -76,4 +77,7 @@ public class CollectionEntry {
     public void setDescription(String description) {
         this.description = description;
     }
+=======
+public class CollectionEntry {
+>>>>>>> bf9558a5a8336c716856ee8a13f20b70ccde2398
 }
