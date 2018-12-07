@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="eu.indiewalkabout.cleantheworld.UI.InsertCollectionActivity">
+
+    <ImageButton
+        android:id="@+id/plastic_Btn"
+        android:layout_width="182dp"
+        android:layout_height="179dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/plasticbtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/plasticItems_Text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/plastic" />
+
+    <ImageButton
+        android:id="@+id/other_Btn"
+        android:layout_width="163dp"
+        android:layout_height="177dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@string/otherbtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/plastic_Btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/other" />
+
+    <TextView
+        android:id="@+id/howManyPlastic_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="How many Plastic items ?"
+        android:text="@string/how_many_plastic_items"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/plasticItems_Text"
+        app:layout_constraintEnd_toEndOf="@+id/plasticItems_Text"
+        app:layout_constraintStart_toStartOf="@+id/plasticItems_Text"
+        app:layout_constraintTop_toBottomOf="@+id/plastic_Btn" />
+
+    <EditText
+        android:id="@+id/plasticItems_Text"
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:contentDescription=" Type number of plastic items collected"
+        android:ems="10"
+        android:inputType="number"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/otherItems_Text"
+        app:layout_constraintEnd_toEndOf="@+id/plastic_Btn"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/plastic_Btn"
+        app:layout_constraintTop_toBottomOf="@+id/otherItems_Text" />
+
+    <TextView
+        android:id="@+id/plasticItem_Descrip_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Description (facultative *)"
+        android:text="Description (facultative *)"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/plasticItem_Descrip_Text"
+        app:layout_constraintEnd_toEndOf="@+id/plasticItem_Descrip_Text"
+        app:layout_constraintStart_toStartOf="@+id/plasticItem_Descrip_Text"
+        app:layout_constraintTop_toBottomOf="@+id/plasticItems_Text" />
+
+    <EditText
+        android:id="@+id/plasticItem_Descrip_Text"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="Insert a description if you want"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/otherItems_Descrip_Text"
+        app:layout_constraintEnd_toEndOf="@+id/plasticItems_Text"
+        app:layout_constraintStart_toStartOf="@+id/plasticItems_Text"
+        app:layout_constraintTop_toBottomOf="@+id/otherItems_Descrip_Text"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/howManyOther_Label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="How many other Garbage items ?"
+        android:text="How many other Garbage items ?"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/otherItems_Text"
+        app:layout_constraintEnd_toEndOf="@+id/otherItems_Text"
+        app:layout_constraintStart_toStartOf="@+id/otherItems_Text"
+        app:layout_constraintTop_toBottomOf="@+id/other_Btn" />
+
+    <EditText
+        android:id="@+id/otherItems_Text"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:contentDescription=" Type number of other garbage items collected"
+        android:ems="10"
+        android:inputType="number"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/other_Btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/other_Btn"
+        app:layout_constraintTop_toBottomOf="@+id/other_Btn" />
+
+    <TextView
+        android:id="@+id/otherItem_Descrip_Label"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Description (facultative *)"
+        android:text="Description (facultative *)"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/otherItems_Descrip_Text"
+        app:layout_constraintEnd_toEndOf="@+id/otherItems_Descrip_Text"
+        app:layout_constraintStart_toStartOf="@+id/otherItems_Descrip_Text"
+        app:layout_constraintTop_toBottomOf="@+id/otherItems_Text" />
+
+    <EditText
+        android:id="@+id/otherItems_Descrip_Text"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Insert a description if you want"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/save_Btn"
+        app:layout_constraintEnd_toEndOf="@+id/otherItems_Text"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/otherItems_Text"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/save_Btn"
+        android:layout_width="154dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Press button to save"
+        android:text="Save"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.856" />
+
+</android.support.constraint.ConstraintLayout>
