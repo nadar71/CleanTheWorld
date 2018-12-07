@@ -1,6 +1,5 @@
 package eu.indiewalkabout.cleantheworld.data;
 
-<<<<<<< HEAD
 import android.arch.persistence.room.TypeConverter;
 
 import java.util.Date;
@@ -16,7 +15,4 @@ public class DateConverter {
         return date == null ? null : date.getTime();
 
     }
-=======
-public class DateConverter {
->>>>>>> bf9558a5a8336c716856ee8a13f20b70ccde2398
 }

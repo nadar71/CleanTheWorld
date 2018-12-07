@@ -1,6 +1,5 @@
 package eu.indiewalkabout.cleantheworld.UI;
 
-<<<<<<< HEAD
 
 import android.content.SharedPreferences;
 import android.preference.ListPreference;
@@ -21,18 +20,10 @@ public class MainSettingsActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = MainSettingsActivity.class.getName();
 
-=======
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-public class MainSettingsActivity extends AppCompatActivity {
-
->>>>>>> bf9558a5a8336c716856ee8a13f20b70ccde2398
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_settings);
-<<<<<<< HEAD
 
         ActionBar actionBar = this.getSupportActionBar();
 
@@ -102,7 +93,7 @@ public class MainSettingsActivity extends AppCompatActivity {
 
 
     /**
-     * Support for èressingback/up buttonin action bar and on screen
+     * Support for pressing back/up button in action bar and on screen
      * @param item
      * @return
      */
@@ -118,7 +109,5 @@ public class MainSettingsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-=======
-    }
->>>>>>> bf9558a5a8336c716856ee8a13f20b70ccde2398
+
 }
