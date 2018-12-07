@@ -4,17 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="eu.indiewalkabout.cleantheworld.MainActivity">
+    tools:context="eu.indiewalkabout.cleantheworld.UI.MainActivity">
 
     <ImageButton
         android:id="@+id/collectBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:contentDescription="@string/collectbtn"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.281"
         app:srcCompat="@drawable/collect" />
 
     <ImageButton
@@ -27,4 +33,58 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_dialog_info" android:layout_marginEnd="16dp" />
+
+    <TextView
+        android:id="@+id/title1_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/till_now_collected"
+        android:text="@string/till_now_collected"
+        app:layout_constraintStart_toStartOf="@+id/collectBtn"
+        app:layout_constraintTop_toBottomOf="@+id/collectBtn" />
+
+    <TextView
+        android:id="@+id/plasticItems_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/plastic_item_collected"
+        android:text="@string/plastic_item"
+        app:layout_constraintStart_toStartOf="@+id/title1_Label"
+        app:layout_constraintTop_toBottomOf="@+id/title1_Label" />
+
+    <TextView
+        android:id="@+id/otherGarbage_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/other_garbage_collected"
+        android:text="@string/other_garbage"
+        app:layout_constraintStart_toStartOf="@+id/plasticItems_Label"
+        app:layout_constraintTop_toBottomOf="@+id/plasticItems_Label" />
+
+    <TextView
+        android:id="@+id/plasticNum_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:contentDescription="@string/plastic_pieces_collected"
+        tools:text="1"
+        app:layout_constraintBottom_toTopOf="@+id/plasticItems_Label"
+        app:layout_constraintStart_toEndOf="@+id/plasticItems_Label"
+        app:layout_constraintTop_toBottomOf="@+id/plasticItems_Label" />
+
+    <TextView
+        android:id="@+id/otherGbNum_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/other_gb_pieces_collected"
+        tools:text="1"
+        app:layout_constraintBottom_toTopOf="@+id/otherGarbage_Label"
+        app:layout_constraintStart_toStartOf="@+id/plasticNum_Label"
+        app:layout_constraintTop_toBottomOf="@+id/otherGarbage_Label"
+        app:layout_constraintVertical_bias="0.586" />
 </android.support.constraint.ConstraintLayout>

@@ -6,4 +6,51 @@
     <string name="test_text">TEST TEXT</string>
     <string name="infobtn">infoBtn</string>
     <string name="collectbtn">collectBtn</string>
+    <string name="how_many_plastic_items">How many Plastic items : </string>
+    <string name="how_many_other_garbage_items">How many other Garbage items : </string>
+    <string name="type_number_of_other_garbage_items_collected">Number other garbage items </string>
+    <string name="type_number_of_plastic_items_collected">Number of plastic items </string>
+    <string name="press_button_to_save">Press button to save</string>
+    <string name="insert_a_description_if_you_want">Insert a description if you want</string>
+    <string name="description_facultative">Description (facultative) : </string>
+    <string name="save">Save</string>
+    <string name="plastic_item_collected">Plastic item collected :</string>
+    <string name="plastic_item">Plastic item :</string>
+    <string name="till_now_collected">Till Now collected :</string>
+    <string name="other_garbage_collected">Other garbage Collected :</string>
+    <string name="other_garbage">Other garbage :</string>
+    <string name="plastic_pieces_collected">Plastic pieces collected</string>
+    <string name="other_gb_pieces_collected">Other gb pieces collected</string>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                   String for Settings                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Settings menu item -->
+    <string name="main_settings_menu_item">Settings</string>
+
+    <!-- Settings activity title -->
+    <string name="main_settings_title">AlgoVisio Settings</string>
+
+
+    <!-- Strings for editing Some Value -->
+    <string name="settings_some_value_label">Some value : </string>
+    <string name="settings_some_value_key" translatable="false">some_value_key</string>
+    <string name="settings_some_value_default" translatable="false">0</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_NAME_value</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_NAME_label">Name</string>
+    <string name="settings_order_by_NAME_value" translatable="false">name</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_DATE_label">Date</string>
+    <string name="settings_order_by_DATE_value" translatable="false">date</string>
+
+
 </resources>
