@@ -1,6 +1,9 @@
 package eu.indiewalkabout.cleantheworld.UI;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
     // todo : change with livedata : db reference
     CleanWorldDb cleanWorldDb;
 
+    /**
+     * ---------------------------------------------------------------------------------------------
+     * onCreate
+     * @param savedInstanceState
+     * ---------------------------------------------------------------------------------------------
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,20 +68,45 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(openInfo);
             }
         });
+
+
+        // show collections data for debug, using LiveData
+        initMainview();
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    /**
+     * ---------------------------------------------------------------------------------------------
+     * Retrieve collections total for main view using LiveData
+     * ---------------------------------------------------------------------------------------------
+     */
+    private void initMainview() {
 
-        // todo : change with livedata :
-        plasticItemsNumStored = 0;
-        otherGbItemsNumStored = 0;
+        // db instance reference
         cleanWorldDb = CleanWorldDb.getsDbInstance(getApplicationContext());
 
-        // todo : change with livedata : Show log list of db entry for debug
-        List<CollectionEntry> collections = cleanWorldDb.cleanDbDao().loadAllCollections();
+        // Use LiveData to receover data from db;Show log list of db entry for debug
+        LiveData<List<CollectionEntry>> collections = cleanWorldDb.cleanDbDao().loadAllCollections();
+
+        collections.observe(this, new Observer<List<CollectionEntry>>() {
+            @Override
+            public void onChanged(@Nullable List<CollectionEntry> collectionEntries) {
+                   // keep view updated
+                   updateCollectionsTotals(collectionEntries);
+            }
+        });
+
+    }
+
+
+    /**
+     * ---------------------------------------------------------------------------------------------
+     * Update the collections totals in views
+     * @param collections
+     * ---------------------------------------------------------------------------------------------
+     */
+    private void updateCollectionsTotals(List<CollectionEntry> collections) {
+        // Get the number of item for local vars
         if (collections.size() > 0 ) {
             getDbEntryList(collections);
         } else {
@@ -82,15 +116,22 @@ public class MainActivity extends AppCompatActivity {
         // show items collected currently
         plasticCollectedNum.setText(Integer.toString(plasticItemsNumStored));
         otherCollectedNum.setText(Integer.toString(otherGbItemsNumStored));
-
     }
 
 
+    /**
+     * ---------------------------------------------------------------------------------------------
+     * Keep plasticItemsNumStored and otherGbItemsNumStored with data from db
+     * @param collections
+     * ---------------------------------------------------------------------------------------------
+     */
+    private void getDbEntryList(List<CollectionEntry> collections){
 
-    // todo : change with livedata :
-    private void getDbEntryList(List<CollectionEntry> collection){
+        // init collections totals values
+        plasticItemsNumStored = 0;
+        otherGbItemsNumStored = 0;
 
-        for (CollectionEntry entry : collection) {
+        for (CollectionEntry entry : collections) {
             // debug : todo : delete
             Log.d(TAG, "Entry id : " + entry.getId() +
                     " num of pieces : " + entry.getNum_of_pieces() +
@@ -98,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
                     " is plastic ? : "  + entry.isPlastic()
             );
 
+
+            // TODO : susbstitute with query sum
             if (entry.isPlastic() == true)
                 plasticItemsNumStored += entry.getNum_of_pieces();
             else

@@ -3,6 +3,7 @@ package eu.indiewalkabout.cleantheworld.UI;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +16,13 @@ import org.w3c.dom.Text;
 import eu.indiewalkabout.cleantheworld.R;
 import eu.indiewalkabout.cleantheworld.data.CleanWorldDb;
 import eu.indiewalkabout.cleantheworld.data.CollectionEntry;
+import eu.indiewalkabout.cleantheworld.data.DateConverter;
 
 import java.util.Date;
 
 public class InsertCollectionActivity extends AppCompatActivity {
+
+    final static String TAG = InsertCollectionActivity.class.getSimpleName();
 
     // Views references
     ImageButton plasticInsertionBtn, otherInsertionBtn;
@@ -51,8 +55,6 @@ public class InsertCollectionActivity extends AppCompatActivity {
         }
 
     }
-
-
 
 
     /**
@@ -109,10 +111,17 @@ public class InsertCollectionActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // field var
+                // final (needed for executor thread):
+                final Date date = new Date();
+                final int fNumItems ;
+                final String fDescription ;
+                final boolean fIsPlastic  ;
+
+                // mutable :
                 int numItems       = 0;
                 String description = "";
-                Date date          = new Date();
                 boolean isPlastic  = false;
 
                 if (plasticNumItems.getText().length() > 0){
@@ -124,13 +133,30 @@ public class InsertCollectionActivity extends AppCompatActivity {
                 if (otherNumItems.getText().length() > 0){
                     numItems = Integer.parseInt(otherNumItems.getText().toString());
                     description = otherNumItemsDesc.getText().toString();
+                    isPlastic = false;
                 }
-                // create new object to insert
-                CollectionEntry collectionEntry = new CollectionEntry(numItems,isPlastic,date,description );
 
-                // Call dao for insertion
-                cleanWorldDb.cleanDbDao().insertCollection(collectionEntry);
-                Toast.makeText(InsertCollectionActivity.this, "Items  collected: " + numItems + " Inserted in db." , Toast.LENGTH_SHORT).show();
+                fNumItems    = numItems;
+                fDescription = description;
+                fIsPlastic   = isPlastic;
+
+                // ----------------------------------------
+                // Update db using executor
+                // ----------------------------------------
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // create new object to insert
+                        CollectionEntry collectionEntry = new CollectionEntry(fNumItems,fIsPlastic,date,fDescription );
+
+                        // Call dao for insertion
+                        cleanWorldDb.cleanDbDao().insertCollection(collectionEntry);
+                        Log.d(TAG, "run: Items  collected: " + fNumItems + " Inserted in db.");
+
+                    }
+
+                });
 
                 // prepare for a new entry
                 saveBtn.setVisibility(View.INVISIBLE);

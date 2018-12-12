@@ -13,16 +13,15 @@ public abstract class CleanWorldDb extends RoomDatabase {
     private static final String TAG = CleanWorldDb.class.getSimpleName();
     // lock for synchro
     private static final Object LOCK   = new Object();
-    // private static final String DBNAME = "CleanWorldDB";
     private static final String DBNAME = "CleanWDB";
     private static CleanWorldDb sDbInstance ;
 
     public static CleanWorldDb getsDbInstance(Context context){
         if(sDbInstance == null){
             synchronized (LOCK){
-                Log.d(TAG, "Creating App db singelton instance...");
+                Log.d(TAG, "Creating App db singleton instance...");
                 sDbInstance = Room.databaseBuilder(context.getApplicationContext(), CleanWorldDb.class,CleanWorldDb.DBNAME)
-                        .allowMainThreadQueries() // TODO : temporary for debugging, delete this
+                        // .allowMainThreadQueries() // TODO : temporary for debugging, delete this
                         .build();
             }
 

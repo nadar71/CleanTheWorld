@@ -1,5 +1,6 @@
 package eu.indiewalkabout.cleantheworld.data;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -14,7 +15,7 @@ import java.util.List;
 public interface CleanDbDao {
 
     @Query("SELECT * FROM COLLECTIONS ORDER BY INSERTED_AT")
-    List<CollectionEntry> loadAllCollections();
+    LiveData<List<CollectionEntry>> loadAllCollections();
 
     @Insert
     void insertCollection(CollectionEntry collectionEntry);
