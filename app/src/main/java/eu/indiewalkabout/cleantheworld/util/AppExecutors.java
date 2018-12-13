@@ -1,4 +1,4 @@
-package eu.indiewalkabout.cleantheworld.UI;
+package eu.indiewalkabout.cleantheworld.util;
 
 import android.os.Handler;
 import android.os.Looper;

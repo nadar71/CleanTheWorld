@@ -9,14 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import eu.indiewalkabout.cleantheworld.R;
 import eu.indiewalkabout.cleantheworld.data.CleanWorldDb;
 import eu.indiewalkabout.cleantheworld.data.CollectionEntry;
-import eu.indiewalkabout.cleantheworld.data.DateConverter;
+import eu.indiewalkabout.cleantheworld.util.AppExecutors;
 
 import java.util.Date;
 

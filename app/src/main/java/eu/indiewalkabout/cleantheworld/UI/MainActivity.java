@@ -2,6 +2,7 @@ package eu.indiewalkabout.cleantheworld.UI;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // show collections data for debug, using LiveData
+        // show collections data for debug, using LiveData/ViewModel
         initMainview();
     }
 
@@ -85,9 +86,14 @@ public class MainActivity extends AppCompatActivity {
         // db instance reference
         cleanWorldDb = CleanWorldDb.getsDbInstance(getApplicationContext());
 
-        // Use LiveData to receover data from db;Show log list of db entry for debug
-        LiveData<List<CollectionEntry>> collections = cleanWorldDb.cleanDbDao().loadAllCollections();
+        // Use LiveData/ViewModel to retrieve data from db;Show log list of db entry for debug
+        // Define a MainViewModel var and init by calling ViewModelProviders.of on MainViewModel
+        MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
 
+        // get the collections data through ViewModel object
+        LiveData<List<CollectionEntry>> collections = viewModel.getCollections();
+
+        // set up an observer on List<CollectionEntry> to monitor changes
         collections.observe(this, new Observer<List<CollectionEntry>>() {
             @Override
             public void onChanged(@Nullable List<CollectionEntry> collectionEntries) {
