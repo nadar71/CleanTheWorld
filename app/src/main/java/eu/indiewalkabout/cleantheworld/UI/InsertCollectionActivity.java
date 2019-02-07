@@ -10,10 +10,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdView;
+
 import eu.indiewalkabout.cleantheworld.R;
 import eu.indiewalkabout.cleantheworld.data.CleanWorldDb;
 import eu.indiewalkabout.cleantheworld.data.CollectionEntry;
 import eu.indiewalkabout.cleantheworld.util.AppExecutors;
+import eu.indiewalkabout.cleantheworld.util.ConsentSDK;
 
 import java.util.Date;
 
@@ -30,6 +33,9 @@ public class InsertCollectionActivity extends AppCompatActivity {
     // Db instance reference
     private CleanWorldDb cleanWorldDb;
 
+    // admob banner ref
+    private AdView mAdView;
+
 
 
 
@@ -40,6 +46,12 @@ public class InsertCollectionActivity extends AppCompatActivity {
 
         // Init UI item
         initViews();
+
+        // load ads banner
+        mAdView = findViewById(R.id.adView);
+
+        // You have to pass the AdRequest from ConsentSDK.getAdRequest(this) because it handle the right way to load the ad
+        mAdView.loadAd(ConsentSDK.getAdRequest(InsertCollectionActivity.this));
 
         // Db init
         cleanWorldDb = CleanWorldDb.getsDbInstance(getApplicationContext());

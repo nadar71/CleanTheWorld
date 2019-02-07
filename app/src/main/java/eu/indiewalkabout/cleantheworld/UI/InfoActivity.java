@@ -5,14 +5,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdView;
+
 import eu.indiewalkabout.cleantheworld.R;
+import eu.indiewalkabout.cleantheworld.util.ConsentSDK;
 
 public class InfoActivity extends AppCompatActivity {
+
+    // admob banner ref
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        // load ads banner
+        mAdView = findViewById(R.id.adView);
+
+        // You have to pass the AdRequest from ConsentSDK.getAdRequest(this) because it handle the right way to load the ad
+        mAdView.loadAd(ConsentSDK.getAdRequest(InfoActivity.this));
+
 
         ActionBar actionBar = this.getSupportActionBar();
 
