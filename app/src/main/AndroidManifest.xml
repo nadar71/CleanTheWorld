@@ -24,7 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.InsertCollectionActivity" />
+        <activity android:name=".UI.InsertPlasticCollectionActivity" />
+        <activity android:name=".UI.InsertOthersCollectionActivity" />
         <activity android:name=".UI.InfoActivity" />
         <activity android:name=".UI.MainSettingsActivity"></activity>
     </application>

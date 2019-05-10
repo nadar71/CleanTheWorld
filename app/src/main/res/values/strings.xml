@@ -1,11 +1,20 @@
 <resources>
+
     <string name="app_name">CleanTheWorld</string>
+
+
+    <!-- - - - - - - - - - - - - - - - - Buttons - - - - - - - - - - - - - - - - - - - - -->
     <string name="collectBtnLabel">Collect !!</string>
     <string name="otherbtn">otherBtn</string>
     <string name="plasticbtn">plasticBtn</string>
-    <string name="test_text">TEST TEXT</string>
     <string name="infobtn">infoBtn</string>
     <string name="collectbtn">collectBtn</string>
+    <string name="savebtn">Save</string>
+    <string name="cancelbtn">Cancel</string>
+
+
+
+    <!-- - - - - - - - - - - - - - - - - Text Labels - - - - - - - - - - - - - - - - - - - - -->
     <string name="how_many_plastic_items">How many Plastic items : </string>
     <string name="how_many_other_garbage_items">How many other Garbage items : </string>
     <string name="type_number_of_other_garbage_items_collected">Number other garbage items </string>
@@ -13,7 +22,7 @@
     <string name="press_button_to_save">Press button to save</string>
     <string name="insert_a_description_if_you_want">Insert a description if you want</string>
     <string name="description_facultative">Description (facultative) : </string>
-    <string name="save">Save</string>
+
     <string name="plastic_item_collected">Plastic item collected :</string>
     <string name="plastic_item">Plastic item :</string>
     <string name="till_now_collected">Till Now collected :</string>
@@ -21,6 +30,9 @@
     <string name="other_garbage">Other garbage :</string>
     <string name="plastic_pieces_collected">Plastic pieces collected</string>
     <string name="other_gb_pieces_collected">Other gb pieces collected</string>
+
+    <string name="test_text">TEST TEXT</string>
+
 
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - -  - - - - - - - - - - - - - -->

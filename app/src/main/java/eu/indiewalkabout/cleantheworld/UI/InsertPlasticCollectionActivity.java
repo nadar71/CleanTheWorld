@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdView;
 
@@ -20,15 +20,14 @@ import eu.indiewalkabout.cleantheworld.util.ConsentSDK;
 
 import java.util.Date;
 
-public class InsertCollectionActivity extends AppCompatActivity {
+public class InsertPlasticCollectionActivity extends AppCompatActivity {
 
-    final static String TAG = InsertCollectionActivity.class.getSimpleName();
+    final static String TAG = InsertPlasticCollectionActivity.class.getSimpleName();
 
     // Views references
-    ImageButton plasticInsertionBtn, otherInsertionBtn;
-    TextView    plasticNumItems_Label, otherNumItems_Label, plasticNumItemsDesc_Label, otherNumItemsDesc_Label;
-    TextView    plasticNumItems, otherNumItems, plasticNumItemsDesc, otherNumItemsDesc;
-    Button      saveBtn;
+    TextView    plasticNumItems_Label, plasticNumItemsDesc_Label;
+    TextView    plasticNumItems, plasticNumItemsDesc;
+    Button      saveBtn, cancelBtn;
 
     // Db instance reference
     private CleanWorldDb cleanWorldDb;
@@ -37,12 +36,10 @@ public class InsertCollectionActivity extends AppCompatActivity {
     private AdView mAdView;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insert);
+        setContentView(R.layout.activity_insert_plastic);
 
         // Init UI item
         initViews();
@@ -51,7 +48,7 @@ public class InsertCollectionActivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
 
         // You have to pass the AdRequest from ConsentSDK.getAdRequest(this) because it handle the right way to load the ad
-        mAdView.loadAd(ConsentSDK.getAdRequest(InsertCollectionActivity.this));
+        mAdView.loadAd(ConsentSDK.getAdRequest(InsertPlasticCollectionActivity.this));
 
         // Db init
         cleanWorldDb = CleanWorldDb.getsDbInstance(getApplicationContext());
@@ -71,50 +68,15 @@ public class InsertCollectionActivity extends AppCompatActivity {
      */
     private void initViews(){
         // recover UI items references
-        plasticInsertionBtn = (ImageButton) findViewById(R.id.plastic_Btn);
-        otherInsertionBtn   = (ImageButton) findViewById(R.id.other_Btn);
 
-        plasticNumItems_Label     = (TextView)findViewById(R.id.howManyPlastic_Label);
-        plasticNumItemsDesc_Label = (TextView)findViewById(R.id.plasticItem_Descrip_Label);
-        plasticNumItems           = (TextView)findViewById(R.id.plasticItems_EditText);
-        plasticNumItemsDesc       = (TextView)findViewById(R.id.plasticItem_Descrip_EditText);
-
-        otherNumItems_Label       = (TextView)findViewById(R.id.howManyOther_Label);
-        otherNumItemsDesc_Label   = (TextView)findViewById(R.id.otherItem_Descrip_Label);
-        otherNumItems             = (TextView)findViewById(R.id.otherItems_EditText);
-        otherNumItemsDesc         = (TextView)findViewById(R.id.otherItems_Descrip_EditText);
-
-        saveBtn                   = (Button)  findViewById(R.id.save_Btn);
+        plasticNumItems_Label     = findViewById(R.id.howManyPlastic_tv);
+        plasticNumItemsDesc_Label = findViewById(R.id.plasticItem_Descrip_tv);
+        plasticNumItems           = findViewById(R.id.plasticItems_et);
+        plasticNumItemsDesc       = findViewById(R.id.plasticItem_Descrip_et);
 
 
-        // set click callbacks
-        plasticInsertionBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                plasticNumItems_Label.setVisibility(View.VISIBLE);
-                plasticNumItemsDesc_Label.setVisibility(View.VISIBLE);
-                plasticNumItems.setVisibility(View.VISIBLE);
-                plasticNumItemsDesc.setVisibility(View.VISIBLE);
-
-                saveBtn.setVisibility(View.VISIBLE);
-
-                otherInsertionBtn.setVisibility(View.INVISIBLE);
-            }
-        });
-
-        otherInsertionBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                otherNumItems_Label.setVisibility(View.VISIBLE);
-                otherNumItemsDesc_Label.setVisibility(View.VISIBLE);
-                otherNumItems.setVisibility(View.VISIBLE);
-                otherNumItemsDesc.setVisibility(View.VISIBLE);
-
-                saveBtn.setVisibility(View.VISIBLE);
-
-                plasticInsertionBtn.setVisibility(View.INVISIBLE);
-            }
-        });
+        saveBtn                   = findViewById(R.id.save_btn);
+        cancelBtn                 = findViewById(R.id.cancel_plastic_btn);
 
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
@@ -139,12 +101,6 @@ public class InsertCollectionActivity extends AppCompatActivity {
                     isPlastic = true;
                 }
 
-                if (otherNumItems.getText().length() > 0){
-                    numItems = Integer.parseInt(otherNumItems.getText().toString());
-                    description = otherNumItemsDesc.getText().toString();
-                    isPlastic = false;
-                }
-
                 fNumItems    = numItems;
                 fDescription = description;
                 fIsPlastic   = isPlastic;
@@ -167,23 +123,21 @@ public class InsertCollectionActivity extends AppCompatActivity {
 
                 });
 
-                // prepare for a new entry
-                saveBtn.setVisibility(View.INVISIBLE);
-                otherInsertionBtn.setVisibility(View.VISIBLE);
-                plasticInsertionBtn.setVisibility(View.VISIBLE);
+                Toast.makeText(InsertPlasticCollectionActivity.this,
+                        fNumItems + " of plastic garbage items SAVED!", Toast.LENGTH_SHORT).show();
 
-                plasticNumItems_Label.setVisibility(View.INVISIBLE);
-                plasticNumItemsDesc_Label.setVisibility(View.INVISIBLE);
-                plasticNumItems.setVisibility(View.INVISIBLE);
-                plasticNumItemsDesc.setVisibility(View.INVISIBLE);
-
-                otherNumItems_Label.setVisibility(View.INVISIBLE);
-                otherNumItemsDesc_Label.setVisibility(View.INVISIBLE);
-                otherNumItems.setVisibility(View.INVISIBLE);
-                otherNumItemsDesc.setVisibility(View.INVISIBLE);
-
+                onBackPressed();
             }
         });
+
+        // go back main in case of cancel, without saving nothing
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
     }
 
 

@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // views references
-    private ImageButton collectBtn = null;
-    private ImageButton infoBtn    = null;
+    private ImageButton collectPlasticBtn,collectOthersBtn, infoBtn ;
     private TextView    plasticCollectedNum, otherCollectedNum;
 
     // total number of items collected till now
@@ -53,10 +52,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // init views
-        collectBtn          = (ImageButton) findViewById(R.id.collectBtn);
-        infoBtn             = (ImageButton) findViewById(R.id.infoBtn);
-        plasticCollectedNum = (TextView)findViewById(R.id.plasticNum_Label);
-        otherCollectedNum   = (TextView)findViewById(R.id.otherGbNum_Label);
+        collectPlasticBtn   = findViewById(R.id.main_plastic_btn);
+        collectOthersBtn    = findViewById(R.id.main_other_btn);
+        infoBtn             = findViewById(R.id.info_btn);
+        plasticCollectedNum = findViewById(R.id.plasticNum_tv);
+        otherCollectedNum   = findViewById(R.id.otherGbNum_tv);
 
         // Initialize ConsentSDK
         ConsentSDK consentSDK = new ConsentSDK.Builder(this)
@@ -84,12 +84,22 @@ public class MainActivity extends AppCompatActivity {
         // You have to pass the AdRequest from ConsentSDK.getAdRequest(this) because it handle the right way to load the ad
         mAdView.loadAd(ConsentSDK.getAdRequest(MainActivity.this));
 
-        // Open collection form
-        collectBtn.setOnClickListener(new View.OnClickListener() {
+        // Open collect plastic form
+        collectPlasticBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openInsert = new Intent(MainActivity.this, InsertCollectionActivity.class);
-                startActivity(openInsert);
+                Intent openInsertPlastic = new Intent(MainActivity.this, InsertPlasticCollectionActivity.class);
+                startActivity(openInsertPlastic);
+            }
+        });
+
+
+        // Open collect others gb form
+        collectOthersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openInsertOtherGb = new Intent(MainActivity.this, InsertOthersCollectionActivity.class);
+                startActivity(openInsertOtherGb);
             }
         });
 

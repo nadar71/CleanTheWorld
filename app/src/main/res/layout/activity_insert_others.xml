@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="eu.indiewalkabout.cleantheworld.UI.InsertPlasticCollectionActivity">
+
+    <ImageButton
+        android:id="@+id/other_btn"
+        android:layout_width="168dp"
+        android:layout_height="177dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="108dp"
+        android:contentDescription="@string/otherbtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/other" />
+
+    <TextView
+        android:id="@+id/howManyOther_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/how_many_other_garbage_items"
+        android:text="@string/how_many_other_garbage_items"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/otherItems_et"
+        app:layout_constraintStart_toStartOf="@+id/otherItems_et"
+        app:layout_constraintTop_toBottomOf="@+id/other_btn" />
+
+    <eu.indiewalkabout.cleantheworld.util.EditTextWithClear
+        android:id="@+id/otherItems_et"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/type_number_of_other_garbage_items_collected"
+        android:inputType="number"
+        android:textSize="12sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/other_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/other_btn"
+        app:layout_constraintTop_toBottomOf="@+id/howManyOther_tv"
+        tools:targetApi="o" />
+
+    <TextView
+        android:id="@+id/otherItem_Descrip_tv"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/description_facultative"
+        android:text="@string/description_facultative"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/otherItems_Descrip_et"
+        app:layout_constraintStart_toStartOf="@+id/otherItems_Descrip_et"
+        app:layout_constraintTop_toBottomOf="@+id/otherItems_et" />
+
+    <eu.indiewalkabout.cleantheworld.util.EditTextWithClear
+        android:id="@+id/otherItems_Descrip_et"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/insert_a_description_if_you_want"
+        android:inputType="textMultiLine"
+        android:textSize="12sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/otherItems_et"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/otherItems_et"
+        app:layout_constraintTop_toBottomOf="@+id/otherItem_Descrip_tv"
+        tools:targetApi="o" />
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/press_button_to_save"
+        android:text="@string/savebtn"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/cancel_others_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toEndOf="@+id/cancel_others_btn"
+        app:layout_constraintTop_toBottomOf="@+id/cancel_others_btn" />
+
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/admob_key_bottom_banner"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintHorizontal_bias="0.0"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/save_btn"
+        ads:layout_constraintVertical_bias="1.0"></com.google.android.gms.ads.AdView>
+
+    <Button
+        android:id="@+id/cancel_others_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/cancelbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otherItems_Descrip_et" />
+
+</android.support.constraint.ConstraintLayout>
